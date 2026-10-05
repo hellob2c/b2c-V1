@@ -6,4 +6,4 @@ const path = require('path');
 process.argv.push(path.resolve(__dirname, 'dist/apps/web/server/index.js'));
 
 // Start the React Router server
-require('@react-router/serve/bin.cjs');
+require(path.resolve(__dirname, 'node_modules/@react-router/serve/bin.cjs'));
