@@ -1,0 +1,7 @@
+import { useEffect, useState } from 'react';
+import type { Product, ProductVariant, CurrencyInfo } from '@/api/ecommerce-api';
+export type CartLine={productId:string;variantId:string;title:string;price:number;currencyInfo:CurrencyInfo|null;quantity:number;tracked:boolean};
+let snapshot:CartLine[]=[]; const listeners=new Set<()=>void>(); let loaded=false;
+function notify(){localStorage.setItem('e-commerce-cart',JSON.stringify(snapshot));listeners.forEach(fn=>fn());}
+export function useCart(){const [lines,setLines]=useState<CartLine[]>([]);const [ready,setReady]=useState(false);useEffect(()=>{if(!loaded){try{snapshot=JSON.parse(localStorage.getItem('e-commerce-cart')||'[]');if(!Array.isArray(snapshot))snapshot=[];}catch{snapshot=[];}loaded=true;} const sync=()=>setLines([...snapshot]);sync();setReady(true);listeners.add(sync);return()=>{listeners.delete(sync);};},[]);return{lines,ready,add:(p:Product,v:ProductVariant,q=1)=>{if(p.type.value==='subscription'||p.type.value==='booking')return;const found=snapshot.find(l=>l.variantId===v.id);if(found)found.quantity+=q;else snapshot.push({productId:p.id,variantId:v.id,title:p.title,price:v.sale_price_in_cents??v.price_in_cents,currencyInfo:v.currency_info,quantity:q,tracked:v.manage_inventory});notify();},quantity:(id:string,q:number)=>{snapshot=snapshot.map(l=>l.variantId===id?{...l,quantity:Math.max(1,q)}:l);notify();},remove:(id:string)=>{snapshot=snapshot.filter(l=>l.variantId!==id);notify();},clear:clearCart};}
+export function clearCart(){snapshot=[];notify();}

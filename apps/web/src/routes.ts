@@ -1,0 +1,26 @@
+import { type RouteConfig, index, route } from '@react-router/dev/routes';
+
+export default [
+	index('routes/home.tsx'),
+	route('api/ecommerce/subscriptions', 'routes/api.ecommerce.subscriptions.ts'),
+	route('api/ecommerce/subscriptions/manage', 'routes/api.ecommerce.subscriptions.manage.ts'),
+	route('services/:slug?', 'routes/services.tsx'),
+	route('tools', 'routes/tools.tsx'),
+	route('products', 'routes/products.tsx'),
+	route('product/:handle', 'routes/product.tsx'),
+	route('plans', 'routes/plans.tsx'),
+	route('subscriptions', 'routes/subscriptions.tsx'),
+	route('login', 'routes/login.tsx'),
+	route('workspace', 'routes/workspace.tsx'),
+	route('admin', 'routes/admin.tsx'),
+	route('contact', 'routes/contact.tsx'),
+	route('cart', 'routes/cart.tsx'),
+	route('checkout/success', 'routes/checkout.success.tsx'),
+	route('checkout/cancelled', 'routes/checkout.cancelled.tsx'),
+	route('llms.txt', 'routes/llms.txt.ts'),
+	route(':section', 'routes/section.tsx'),
+	route('sitemap.xml', 'routes/sitemap.xml.ts'),
+	route('robots.txt', 'routes/robots.txt.ts'),
+	route('api/health', 'routes/api.health.ts'),
+	route('api/*', 'routes/api.$.ts'),
+] satisfies RouteConfig;

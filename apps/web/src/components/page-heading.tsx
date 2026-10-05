@@ -1,0 +1,1 @@
+export function PageHeading({label,title,description}:{label:string;title:string;description:string}){return <section className="page-top"><div className="rail"><div className="eyebrow">{label}</div><h1>{title}</h1><p>{description}</p></div></section>}

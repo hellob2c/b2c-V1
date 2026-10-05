@@ -1,0 +1,2 @@
+import { useState } from 'react';
+export function AccessibilityControl(){const [contrast,setContrast]=useState(false);return <button style={{border:0,background:'none',fontSize:9,color:'var(--quiet)',cursor:'pointer'}} aria-pressed={contrast} onClick={()=>{setContrast(!contrast);document.documentElement.classList.toggle('high-contrast',!contrast);}}> {contrast?'Standard contrast':'Increase contrast'} </button>}

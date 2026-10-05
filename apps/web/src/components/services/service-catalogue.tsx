@@ -1,0 +1,2 @@
+import { Link } from 'react-router';import { ArrowUpRight } from 'lucide-react';import { capabilities } from '@/data/company';
+export function ServiceCatalogue(){return <div className="rail section"><div className="capability-grid">{capabilities.map(c=><Link className="capability" to={`/services/${c.slug}`} key={c.slug}><ArrowUpRight className="arrow" size={18}/><div className="eyebrow">{c.tags.split(' · ')[0]}</div><h3>{c.title}</h3><p>{c.description}</p><div className="text-link">Explore scope & estimate</div></Link>)}</div></div>}

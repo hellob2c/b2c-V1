@@ -1,0 +1,2 @@
+import type { Route } from './+types/login';import { seo } from '@/lib/seo';import { AuthForm } from '@/components/auth-form';
+export function meta({matches,location}:Route.MetaArgs){return seo({matches,location},{title:'Client Login — HelloB2C',description:'Sign in to your secure HelloB2C client account, saved tools and billing.',noindex:true});}export default function Login(){return <AuthForm/>;}

@@ -1,0 +1,1 @@
+export function LaunchNote(){return <div className="rail" style={{paddingTop:20,paddingBottom:20}}><p style={{fontSize:10,color:'var(--quiet)'}}>Launch status: connected demo store and memberships. Founder proof, live payment providers, delivery assets, academy and advanced CRM automation require setup before commercial launch.</p></div>}
